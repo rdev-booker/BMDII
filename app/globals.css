@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS custom properties ────────────────────────────────────────────────── */
+:root {
+  --bmd-red:       #C0202E;
+  --bmd-red-dark:  #8C141D;
+  --bmd-ink:       #0D0B0B;
+  --bmd-charcoal:  #181414;
+  --bmd-ivory:     #F6F4EF;
+  --nav-height:    72px;
+}
+
+/* ─── Base layer ────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--bmd-ivory);
+    color: theme('colors.bmd.ink.950');
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Brand selection colour */
+  ::selection {
+    background-color: var(--bmd-red);
+    color: #fff;
+  }
+
+  /* Focus ring — keeps keyboard nav accessible without ugly defaults */
+  :focus-visible {
+    @apply outline-none ring-2 ring-bmd-red-500 ring-offset-2 ring-offset-transparent rounded-sm;
+  }
+
+  /* Heading defaults — tight tracking for industrial B2B feel */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ─── Component utilities ───────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Layout ─────────────────────────────────────────────────────────────── */
+  .container-xl {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-pad {
+    @apply py-20 lg:py-28;
+  }
+
+  .section-pad-sm {
+    @apply py-14 lg:py-20;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────────── */
+
+  /* Primary — filled red, the only "loud" button in the system */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-bmd-red-500 hover:bg-bmd-red-700 active:bg-bmd-red-800
+           text-white font-semibold tracking-wide
+           text-label-lg uppercase
+           px-7 py-3.5 rounded-sm
+           shadow-red-btn hover:shadow-red-btn-hover
+           transition-all duration-250
+           hover:-translate-y-px active:translate-y-0
+           focus-visible:ring-offset-bmd-ink-950;
+  }
+
+  /* Primary large — hero CTAs */
+  .btn-primary-lg {
+    @apply btn-primary px-9 py-4 text-sm;
+  }
+
+  /* Ghost — for dark backgrounds */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           border border-white/25 hover:border-white/50
+           text-white font-semibold tracking-wide
+           text-label-lg uppercase
+           px-7 py-3.5 rounded-sm
+           transition-all duration-250
+           hover:bg-white/5 active:bg-white/10;
+  }
+
+  /* Ghost large */
+  .btn-ghost-lg {
+    @apply btn-ghost px-9 py-4 text-sm;
+  }
+
+  /* Outline — for light backgrounds */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-bmd-ink-200 hover:border-bmd-red-500
+           text-bmd-ink-900 hover:text-bmd-red-500
+           font-semibold tracking-wide
+           text-label-lg uppercase
+           px-7 py-3.5 rounded-sm
+           transition-all duration-250;
+  }
+
+  /* Text link button */
+  .btn-text {
+    @apply inline-flex items-center gap-1.5
+           text-bmd-red-500 hover:text-bmd-red-700
+           font-semibold text-body-sm
+           transition-colors duration-200;
+  }
+
+  /* ── Section decorators ──────────────────────────────────────────────────── */
+
+  /* Eyebrow label above section headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5
+           text-bmd-red-500 font-semibold
+           text-label uppercase tracking-widest
+           mb-4;
+  }
+
+  .eyebrow-line::before {
+    content: '';
+    @apply inline-block w-8 h-px bg-bmd-red-500;
+  }
+
+  /* Section heading — light backgrounds */
+  .h2-section {
+    @apply text-display-md lg:text-display-lg
+           font-extrabold text-bmd-ink-950
+           tracking-tighter leading-tight;
+  }
+
+  /* Section heading — dark backgrounds */
+  .h2-section-light {
+    @apply text-display-md lg:text-display-lg
+           font-extrabold text-white
+           tracking-tighter leading-tight;
+  }
+
+  /* Red rule divider below section headings */
+  .rule-red {
+    @apply w-12 h-[3px] bg-bmd-red-500 rounded-full mt-5 mb-7;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────────────── */
+
+  .card {
+    @apply rounded-sm border border-bmd-ink-100 bg-white
+           shadow-card transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-card-hover hover:border-bmd-red-500/30;
+  }
+
+  .card-dark {
+    @apply rounded-sm border border-white/10 bg-bmd-ink-900
+           shadow-card-dark;
+  }
+
+  /* ── Nav utilities ───────────────────────────────────────────────────────── */
+
+  .nav-link {
+    @apply text-body-sm font-medium text-neutral-300
+           hover:text-white tracking-wide
+           transition-colors duration-200
+           relative after:absolute after:inset-x-0 after:-bottom-0.5
+           after:h-px after:bg-bmd-red-500 after:scale-x-0
+           hover:after:scale-x-100 after:transition-transform after:duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-white after:scale-x-100;
+  }
+
+  /* ── Badges / tags ───────────────────────────────────────────────────────── */
+
+  .badge-red {
+    @apply inline-flex items-center gap-1.5
+           bg-bmd-red-500/10 border border-bmd-red-500/25
+           text-bmd-red-500 font-semibold
+           text-label uppercase tracking-widest
+           px-3 py-1.5 rounded-sm;
+  }
+
+  .badge-dark {
+    @apply inline-flex items-center gap-1.5
+           bg-white/5 border border-white/10
+           text-neutral-300 font-medium
+           text-label uppercase tracking-widest
+           px-3 py-1.5 rounded-sm;
+  }
+
+  /* ── Form fields (with @tailwindcss/forms class strategy) ───────────────── */
+
+  .field {
+    @apply form-input w-full
+           bg-bmd-ivory-100 border border-bmd-ink-200
+           text-bmd-ink-950 placeholder-bmd-ink-300
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200;
+  }
+
+  .field-select {
+    @apply form-select w-full
+           bg-bmd-ivory-100 border border-bmd-ink-200
+           text-bmd-ink-950
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200;
+  }
+
+  .field-textarea {
+    @apply form-textarea w-full
+           bg-bmd-ivory-100 border border-bmd-ink-200
+           text-bmd-ink-950 placeholder-bmd-ink-300
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200 resize-none;
+  }
+
+  .field-label {
+    @apply block text-label uppercase tracking-widest
+           font-semibold text-bmd-ink-600 mb-1.5;
+  }
+}
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Gradient text — red to dark-red */
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #D63040 0%, #8C141D 100%);
+  }
+
+  /* Noise texture overlay */
+  .noise {
+    position: relative;
+  }
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  /* Scroll fade — white edges on horizontal scroll containers */
+  .scroll-fade {
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+
+  /* Visually hide without removing from flow (accessibility) */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
