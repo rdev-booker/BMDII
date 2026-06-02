@@ -4,12 +4,12 @@ import { ArrowRight, Wind, Layers3, Settings2 } from 'lucide-react'
 const industries = [
   {
     icon: Wind,
-    title: 'HVAC & Mechanical',
+    title: 'HVAC and Mechanical',
     subtitle: 'Rooftop Units · Chillers · Air Handlers',
     description:
-      'We understand job site timing. Whether it&rsquo;s a rooftop unit crane lift or a commercial chiller delivery, BMD coordinates specialized equipment transport to arrive exactly when your crew is ready.',
+      'We understand job site timing. Whether it is a rooftop unit crane lift or a commercial chiller delivery, BMD coordinates specialized equipment transport to arrive exactly when your crew is ready.',
     highlights: [
-      'Rooftop unit staging & delivery',
+      'Rooftop unit staging and delivery',
       'Commercial chiller transport',
       'Large-format air handler moves',
       'Time-sensitive job site delivery',
@@ -18,13 +18,13 @@ const industries = [
   },
   {
     icon: Layers3,
-    title: 'Steel & Metal Fabrication',
+    title: 'Steel and Metal Fabrication',
     subtitle: 'Structural Steel · Plate · Coils · Beams',
     description:
       'From structural steel for construction projects to coiled metal for fabrication shops, we move raw and finished steel with the securement expertise that protects your investment.',
     highlights: [
-      'Structural steel & beams',
-      'Steel plate & coil transport',
+      'Structural steel and beams',
+      'Steel plate and coil transport',
       'Fabricated assembly delivery',
       'Steel service centre routes',
     ],
@@ -35,12 +35,12 @@ const industries = [
     title: 'Custom Manufacturing',
     subtitle: 'Machinery · Production Lines · One-Off Loads',
     description:
-      'Custom-built equipment doesn&rsquo;t follow standard dimensions. Neither does our thinking. BMD specializes in the unusual loads &mdash; the one-offs, the prototypes, and the mission-critical production line moves.',
+      'Custom-built equipment does not follow standard dimensions. Neither does our thinking. BMD specializes in the unusual loads: the one-offs, the prototypes, and the mission-critical production line moves.',
     highlights: [
-      'CNC & production machinery',
+      'CNC and production machinery',
       'Oversized custom equipment',
       'Production line relocation',
-      'Trade show & prototype freight',
+      'Trade show and prototype freight',
     ],
     visual: 'MFG',
   },
@@ -49,27 +49,27 @@ const industries = [
 export default function IndustriesSection() {
   return (
     <section
-      className="bg-neutral-50 py-20 lg:py-28 relative overflow-hidden"
+      className="bg-bmd-ivory-100 py-20 lg:py-28 relative overflow-hidden"
       id="industries"
       aria-label="Industries served"
     >
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-bmd-red/3 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
-
       <div className="container-xl relative">
+
         {/* Section header */}
         <div className="max-w-2xl mb-16">
-          <p className="section-label">
-            <span className="w-8 h-px bg-bmd-red" />
-            Who We Serve
-          </p>
-          <h2 className="section-heading mb-4">
+          <div className="inline-flex items-center gap-2.5 mb-4">
+            <span className="w-8 h-px bg-bmd-red-500" />
+            <span className="text-label text-bmd-red-500 tracking-widest uppercase font-bold">
+              Who We Serve
+            </span>
+          </div>
+          <h2 className="h2-section mb-4">
             Built for{' '}
-            <span className="text-bmd-red">Industrial Clients</span>{' '}
+            <span className="text-bmd-red-500">Industrial Clients</span>{' '}
             Who Can&rsquo;t Afford Mistakes
           </h2>
-          <div className="divider-red" />
-          <p className="text-neutral-600 leading-relaxed text-lg">
+          <div className="rule-red" />
+          <p className="text-bmd-ink-500 leading-relaxed text-lg">
             Our clients operate in demanding industries where a missed delivery or damaged load
             means costly downtime. BMD is the carrier they trust when the stakes are high.
           </p>
@@ -80,54 +80,57 @@ export default function IndustriesSection() {
           {industries.map((industry) => (
             <div
               key={industry.title}
-              className="group bg-white rounded-sm border border-neutral-200 hover:border-bmd-red/30 transition-all duration-300 hover:shadow-xl hover:shadow-neutral-200 hover:-translate-y-1 overflow-hidden"
+              className="group bg-white rounded-sm border border-bmd-ink-100
+                         hover:border-bmd-red-500/30 transition-all duration-300
+                         hover:shadow-card-hover hover:-translate-y-1 overflow-hidden"
             >
               {/* Visual header */}
-              <div className="relative h-40 bg-bmd-steel overflow-hidden">
-                {/* Placeholder — replace with Image when assets ready */}
-                <div className="absolute inset-0 bg-gradient-to-br from-bmd-charcoal via-bmd-steel to-neutral-800" />
+              <div className="relative h-40 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-bmd-slate-700
+                                via-bmd-slate-800 to-bmd-ink-950" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <industry.icon className="w-10 h-10 text-bmd-red/60 mx-auto mb-2" />
-                    <span className="text-[10px] font-mono text-neutral-600 tracking-widest uppercase">
+                    <industry.icon className="w-10 h-10 text-bmd-red-400/70 mx-auto mb-2" />
+                    <span className="text-[10px] font-mono text-neutral-500 tracking-widest uppercase">
                       {industry.visual} Photo
                     </span>
                   </div>
                 </div>
-                {/* Red bottom border reveal */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-bmd-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {/* Red bottom reveal on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-bmd-red-500
+                                transform scale-x-0 group-hover:scale-x-100
+                                transition-transform duration-300 origin-left" />
               </div>
 
               <div className="p-7">
-                {/* Icon + title */}
                 <div className="flex items-center gap-3 mb-1">
-                  <div className="w-9 h-9 bg-bmd-red/8 rounded-sm flex items-center justify-center group-hover:bg-bmd-red/15 transition-colors duration-300">
-                    <industry.icon className="w-5 h-5 text-bmd-red" />
+                  <div className="w-9 h-9 bg-bmd-red-500/8 rounded-sm flex items-center justify-center
+                                  group-hover:bg-bmd-red-500/15 transition-colors duration-300">
+                    <industry.icon className="w-5 h-5 text-bmd-red-500" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-900">{industry.title}</h3>
+                  <h3 className="text-lg font-bold text-bmd-ink-950">{industry.title}</h3>
                 </div>
-                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-4 pl-12">
+                <p className="text-xs font-semibold text-bmd-ink-400 uppercase tracking-wider mb-4 pl-12">
                   {industry.subtitle}
                 </p>
 
-                <p
-                  className="text-sm text-neutral-600 leading-relaxed mb-6"
-                  dangerouslySetInnerHTML={{ __html: industry.description }}
-                />
+                <p className="text-sm text-bmd-ink-500 leading-relaxed mb-6">
+                  {industry.description}
+                </p>
 
-                {/* Highlight bullets */}
                 <ul className="space-y-2 mb-6">
                   {industry.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-2.5 text-xs text-neutral-600">
-                      <span className="w-1.5 h-1.5 rounded-full bg-bmd-red flex-shrink-0" />
+                    <li key={h} className="flex items-center gap-2.5 text-xs text-bmd-ink-500">
+                      <span className="w-1.5 h-1.5 rounded-full bg-bmd-red-500 flex-shrink-0" />
                       {h}
                     </li>
                   ))}
                 </ul>
 
                 <Link
-                  href="#contact"
-                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold text-bmd-red hover:text-bmd-red-dark transition-colors duration-200"
+                  href="/contact"
+                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold
+                             text-bmd-red-500 hover:text-bmd-red-700 transition-colors duration-200"
                 >
                   Ship With Us
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/cta:translate-x-1" />
@@ -138,16 +141,17 @@ export default function IndustriesSection() {
         </div>
 
         {/* Bottom statement */}
-        <div className="mt-14 bg-white border border-neutral-200 rounded-sm p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-14 bg-white border border-bmd-ink-100 rounded-sm p-8
+                        flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <p className="text-xs font-bold text-bmd-red uppercase tracking-[0.18em] mb-1">
+            <p className="text-xs font-bold text-bmd-red-500 uppercase tracking-[0.18em] mb-1">
               Not on this list?
             </p>
-            <p className="text-neutral-700 font-medium">
-              If your freight is heavy, large, or complicated &mdash; we&rsquo;ve probably moved it before.
+            <p className="text-bmd-ink-700 font-medium">
+              If your freight is heavy, large, or complicated, we have probably moved it before.
             </p>
           </div>
-          <Link href="#contact" className="btn-outline-dark whitespace-nowrap">
+          <Link href="/contact" className="btn-outline whitespace-nowrap">
             Discuss Your Freight
             <ArrowRight className="w-4 h-4" />
           </Link>

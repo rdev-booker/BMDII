@@ -4,12 +4,12 @@
 
 /* ─── CSS custom properties ────────────────────────────────────────────────── */
 :root {
-  --bmd-red:       #C0202E;
-  --bmd-red-dark:  #8C141D;
-  --bmd-ink:       #0D0B0B;
-  --bmd-charcoal:  #181414;
-  --bmd-ivory:     #F6F4EF;
-  --nav-height:    72px;
+  --bmd-red:      #C0202E;
+  --bmd-red-dark: #8C141D;
+  --bmd-ink:      #0D0B0B;
+  --bmd-charcoal: #201C1C;
+  --bmd-ivory:    #F6F4EF;
+  --nav-height:   72px;
 }
 
 /* ─── Base layer ────────────────────────────────────────────────────────────── */
@@ -21,27 +21,25 @@
 
   body {
     @apply antialiased;
-    background-color: var(--bmd-ivory);
+    background-color: #ffffff;
     color: theme('colors.bmd.ink.950');
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Brand selection colour */
   ::selection {
     background-color: var(--bmd-red);
     color: #fff;
   }
 
-  /* Focus ring — keeps keyboard nav accessible without ugly defaults */
   :focus-visible {
     @apply outline-none ring-2 ring-bmd-red-500 ring-offset-2 ring-offset-transparent rounded-sm;
   }
 
-  /* Heading defaults — tight tracking for industrial B2B feel */
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-tight font-bold;
+    font-family: var(--font-barlow), var(--font-inter), system-ui, sans-serif;
     text-wrap: balance;
   }
 
@@ -68,7 +66,6 @@
 
   /* ── Buttons ─────────────────────────────────────────────────────────────── */
 
-  /* Primary — filled red, the only "loud" button in the system */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
            bg-bmd-red-500 hover:bg-bmd-red-700 active:bg-bmd-red-800
@@ -78,15 +75,13 @@
            shadow-red-btn hover:shadow-red-btn-hover
            transition-all duration-250
            hover:-translate-y-px active:translate-y-0
-           focus-visible:ring-offset-bmd-ink-950;
+           focus-visible:ring-offset-white;
   }
 
-  /* Primary large — hero CTAs */
   .btn-primary-lg {
     @apply btn-primary px-9 py-4 text-sm;
   }
 
-  /* Ghost — for dark backgrounds */
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2
            border border-white/25 hover:border-white/50
@@ -97,12 +92,10 @@
            hover:bg-white/5 active:bg-white/10;
   }
 
-  /* Ghost large */
   .btn-ghost-lg {
     @apply btn-ghost px-9 py-4 text-sm;
   }
 
-  /* Outline — for light backgrounds */
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2
            border border-bmd-ink-200 hover:border-bmd-red-500
@@ -113,7 +106,11 @@
            transition-all duration-250;
   }
 
-  /* Text link button */
+  /* Alias used in older component references */
+  .btn-outline-dark {
+    @apply btn-outline;
+  }
+
   .btn-text {
     @apply inline-flex items-center gap-1.5
            text-bmd-red-500 hover:text-bmd-red-700
@@ -123,7 +120,6 @@
 
   /* ── Section decorators ──────────────────────────────────────────────────── */
 
-  /* Eyebrow label above section headings */
   .eyebrow {
     @apply inline-flex items-center gap-2.5
            text-bmd-red-500 font-semibold
@@ -136,23 +132,40 @@
     @apply inline-block w-8 h-px bg-bmd-red-500;
   }
 
-  /* Section heading — light backgrounds */
+  /* Legacy alias used in components */
+  .section-label {
+    @apply eyebrow eyebrow-line;
+  }
+
   .h2-section {
     @apply text-display-md lg:text-display-lg
            font-extrabold text-bmd-ink-950
            tracking-tighter leading-tight;
   }
 
-  /* Section heading — dark backgrounds */
+  /* Legacy alias */
+  .section-heading {
+    @apply h2-section;
+  }
+
   .h2-section-light {
     @apply text-display-md lg:text-display-lg
            font-extrabold text-white
            tracking-tighter leading-tight;
   }
 
-  /* Red rule divider below section headings */
+  /* Legacy alias */
+  .section-heading-light {
+    @apply h2-section-light;
+  }
+
   .rule-red {
     @apply w-12 h-[3px] bg-bmd-red-500 rounded-full mt-5 mb-7;
+  }
+
+  /* Legacy alias */
+  .divider-red {
+    @apply rule-red;
   }
 
   /* ── Cards ───────────────────────────────────────────────────────────────── */
@@ -171,19 +184,25 @@
            shadow-card-dark;
   }
 
-  /* ── Nav utilities ───────────────────────────────────────────────────────── */
+  /* ── Nav utilities (light theme) ─────────────────────────────────────────── */
 
   .nav-link {
-    @apply text-body-sm font-medium text-neutral-300
-           hover:text-white tracking-wide
+    @apply text-body-sm font-semibold text-bmd-ink-700
+           hover:text-bmd-ink-950 tracking-wide
            transition-colors duration-200
            relative after:absolute after:inset-x-0 after:-bottom-0.5
-           after:h-px after:bg-bmd-red-500 after:scale-x-0
+           after:h-[2px] after:bg-bmd-red-500 after:scale-x-0
            hover:after:scale-x-100 after:transition-transform after:duration-200;
   }
 
   .nav-link-active {
-    @apply text-white after:scale-x-100;
+    @apply text-bmd-ink-950 after:scale-x-100;
+  }
+
+  .nav-link-light {
+    @apply text-body-sm font-medium text-neutral-300
+           hover:text-white tracking-wide
+           transition-colors duration-200;
   }
 
   /* ── Badges / tags ───────────────────────────────────────────────────────── */
@@ -204,11 +223,11 @@
            px-3 py-1.5 rounded-sm;
   }
 
-  /* ── Form fields (with @tailwindcss/forms class strategy) ───────────────── */
+  /* ── Form fields ─────────────────────────────────────────────────────────── */
 
   .field {
     @apply form-input w-full
-           bg-bmd-ivory-100 border border-bmd-ink-200
+           bg-white border border-bmd-ink-200
            text-bmd-ink-950 placeholder-bmd-ink-300
            text-body-sm rounded-sm px-4 py-3
            focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
@@ -217,7 +236,7 @@
 
   .field-select {
     @apply form-select w-full
-           bg-bmd-ivory-100 border border-bmd-ink-200
+           bg-white border border-bmd-ink-200
            text-bmd-ink-950
            text-body-sm rounded-sm px-4 py-3
            focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
@@ -226,7 +245,7 @@
 
   .field-textarea {
     @apply form-textarea w-full
-           bg-bmd-ivory-100 border border-bmd-ink-200
+           bg-white border border-bmd-ink-200
            text-bmd-ink-950 placeholder-bmd-ink-300
            text-body-sm rounded-sm px-4 py-3
            focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
@@ -237,36 +256,48 @@
     @apply block text-label uppercase tracking-widest
            font-semibold text-bmd-ink-600 mb-1.5;
   }
+
+  /* Dark-background form variant */
+  .field-dark {
+    @apply form-input w-full
+           bg-bmd-ink-900 border border-white/10
+           text-white placeholder-bmd-ink-400
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200;
+  }
+
+  .field-select-dark {
+    @apply form-select w-full
+           bg-bmd-ink-900 border border-white/10
+           text-white
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200;
+  }
+
+  .field-textarea-dark {
+    @apply form-textarea w-full
+           bg-bmd-ink-900 border border-white/10
+           text-white placeholder-bmd-ink-400
+           text-body-sm rounded-sm px-4 py-3
+           focus:border-bmd-red-500 focus:ring-1 focus:ring-bmd-red-500
+           transition-colors duration-200 resize-none;
+  }
 }
 
 /* ─── Utilities ─────────────────────────────────────────────────────────────── */
 @layer utilities {
 
-  /* Gradient text — red to dark-red */
   .text-gradient-red {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, #D63040 0%, #8C141D 100%);
   }
 
-  /* Noise texture overlay */
-  .noise {
-    position: relative;
-  }
-  .noise::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    opacity: 0.35;
-  }
-
-  /* Scroll fade — white edges on horizontal scroll containers */
   .scroll-fade {
     mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   }
 
-  /* Visually hide without removing from flow (accessibility) */
   .sr-only {
     position: absolute;
     width: 1px;

@@ -4,35 +4,30 @@ import {
   Shield, Clock, Globe2, Award,
 } from 'lucide-react'
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
 const services = [
-  { label: 'Over-Dimensional Freight', href: '#services' },
-  { label: 'Open Deck / Step Deck',    href: '#services' },
-  { label: 'Industrial FTL',           href: '#services' },
-  { label: 'Cross-Border Shipping',    href: '#services' },
+  { label: 'Over-Dimensional Freight', href: '/services/over-dimensional' },
+  { label: 'Open Deck / Step Deck',    href: '/services/open-deck'        },
+  { label: 'Industrial FTL',           href: '/services/industrial-ftl'   },
+  { label: 'Cross-Border Shipping',    href: '/services/over-dimensional'  },
 ]
 
 const company = [
-  { label: 'About BMD',          href: '#about'      },
-  { label: 'Industries Served',  href: '#industries' },
-  { label: 'Safety & Compliance',href: '#about'      },
-  { label: 'Contact Us',         href: '#contact'    },
+  { label: 'About BMD',          href: '/about'   },
+  { label: 'Industries Served',  href: '/#industries' },
+  { label: 'Careers',            href: '/careers' },
+  { label: 'Contact Us',         href: '/contact' },
 ]
 
 const credentials = [
-  { icon: Shield, label: 'CVOR Certified'    },
-  { icon: Globe2, label: 'DOT Registered'   },
-  { icon: Award,  label: 'Fully Insured'    },
-  { icon: Clock,  label: 'Est. 1987'        },
+  { icon: Shield, label: 'CVOR Certified'  },
+  { icon: Globe2, label: 'DOT Registered' },
+  { icon: Award,  label: 'Fully Insured'  },
+  { icon: Clock,  label: 'Est. 1987'      },
 ]
-
-// ─── Pre-footer CTA strip ─────────────────────────────────────────────────────
 
 function PreFooter() {
   return (
     <div className="bg-bmd-red-500 relative overflow-hidden">
-      {/* Diagonal texture */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -43,7 +38,6 @@ function PreFooter() {
 
       <div className="container-xl relative py-10 lg:py-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Copy */}
           <div className="text-center lg:text-left">
             <p className="text-label uppercase tracking-widest text-red-200 font-bold mb-2">
               Ready to ship?
@@ -55,7 +49,6 @@ function PreFooter() {
             </h2>
           </div>
 
-          {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
             <a
               href="tel:+16135551234"
@@ -68,9 +61,9 @@ function PreFooter() {
               (613) 555-1234
             </a>
             <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-white text-bmd-red-600 hover:bg-red-50
-                         font-bold px-7 py-3.5 rounded-sm
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-bmd-red-600
+                         hover:bg-red-50 font-bold px-7 py-3.5 rounded-sm
                          transition-all duration-200 shadow-lg shadow-red-900/30
                          text-body-sm whitespace-nowrap"
             >
@@ -84,26 +77,22 @@ function PreFooter() {
   )
 }
 
-// ─── Main footer ──────────────────────────────────────────────────────────────
-
 export default function Footer() {
   return (
     <footer className="bg-bmd-ink-950 text-white" id="contact">
       <PreFooter />
 
-      {/* Top gradient rule */}
       <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
       <div className="container-xl pt-16 pb-10 lg:pt-20 lg:pb-12">
 
-        {/* ── Main grid ──────────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr] gap-12 lg:gap-10">
 
           {/* Brand column */}
           <div>
-            {/* Wordmark */}
             <div className="flex flex-col leading-none mb-5">
-              <span className="text-[32px] font-extrabold text-white tracking-tightest">
+              <span className="text-[32px] font-extrabold text-white tracking-tightest"
+                    style={{ fontFamily: 'var(--font-barlow), var(--font-inter)' }}>
                 BMD
               </span>
               <span className="text-label-sm text-neutral-500 tracking-ultra-wide uppercase mt-0.5">
@@ -112,17 +101,15 @@ export default function Footer() {
             </div>
 
             <p className="text-body-sm text-neutral-400 leading-relaxed mb-6 max-w-[280px]">
-              Eastern Ontario&rsquo;s specialized freight authority. Approaching 40 years of
+              Eastern Ontario&rsquo;s specialized freight authority. Nearly 40 years of
               precision freight movement for industrial, commercial, and cross-border clients.
             </p>
 
-            {/* Est. badge */}
             <div className="badge-red mb-6 self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-bmd-red-500 animate-pulse-slow" />
-              Est. 1987 &mdash; Eastern Ontario
+              Est. 1987 · Eastern Ontario
             </div>
 
-            {/* Credentials row */}
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
               {credentials.map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-2">
@@ -194,7 +181,6 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-5">
-              {/* Phone */}
               <li>
                 <p className="text-label-sm text-neutral-600 uppercase tracking-widest mb-1.5">
                   Dispatch
@@ -211,11 +197,10 @@ export default function Footer() {
                   (613) 555-1234
                 </a>
                 <p className="text-label-sm text-neutral-600 ml-11 mt-1 uppercase tracking-widest">
-                  Mon–Fri · 7am–6pm EST
+                  Mon-Fri · 7am-6pm EST
                 </p>
               </li>
 
-              {/* Email */}
               <li>
                 <p className="text-label-sm text-neutral-600 uppercase tracking-widest mb-1.5">
                   Email
@@ -233,7 +218,6 @@ export default function Footer() {
                 </a>
               </li>
 
-              {/* Location */}
               <li>
                 <p className="text-label-sm text-neutral-600 uppercase tracking-widest mb-1.5">
                   Location
@@ -250,7 +234,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Bottom bar ─────────────────────────────────────────────────── */}
+        {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/6 flex flex-col sm:flex-row
                         items-center justify-between gap-4">
           <p className="text-label-sm text-neutral-700 uppercase tracking-widest">

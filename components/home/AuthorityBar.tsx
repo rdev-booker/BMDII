@@ -13,7 +13,7 @@ const pillars = [
     value: 'OD',
     unit: 'Certified',
     label: 'Over-Dimensional',
-    description: 'Wide, high & long load specialists',
+    description: 'Wide, high and long load specialists',
   },
   {
     icon: Globe2,
@@ -33,49 +33,55 @@ const pillars = [
     icon: ShieldCheck,
     value: '100%',
     unit: 'Compliant',
-    label: 'Licensed & Insured',
-    description: 'CVOR & DOT certified operations',
+    label: 'Licensed and Insured',
+    description: 'CVOR and DOT certified operations',
   },
 ]
 
 export default function AuthorityBar() {
   return (
-    <section className="bg-bmd-charcoal border-y border-white/5" aria-label="Authority highlights">
+    <section
+      className="bg-bmd-ivory-50 border-y border-bmd-ink-100"
+      aria-label="Authority highlights"
+    >
       <div className="container-xl py-12 lg:py-14">
-        {/* Section intro */}
+
         <div className="text-center mb-10">
-          <p className="section-label justify-center">
-            <span className="w-8 h-px bg-bmd-red" />
-            Why BMD
-            <span className="w-8 h-px bg-bmd-red" />
-          </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-white">
-            Approaching 40 Years of Unbroken Reliability
+          <div className="inline-flex items-center gap-3 mb-3">
+            <span className="w-8 h-px bg-bmd-red-500" />
+            <span className="text-label uppercase tracking-widest text-bmd-red-500 font-bold">
+              Why BMD
+            </span>
+            <span className="w-8 h-px bg-bmd-red-500" />
+          </div>
+          <h2 className="text-display-sm font-bold text-bmd-ink-950">
+            Nearly 40 Years of Unbroken Reliability
           </h2>
         </div>
 
-        {/* Pillars grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-white/5 rounded-sm overflow-hidden">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-bmd-ink-100 rounded-sm overflow-hidden">
           {pillars.map(({ icon: Icon, value, unit, label, description }) => (
             <div
               key={label}
-              className="group bg-bmd-charcoal hover:bg-bmd-steel transition-colors duration-300 p-6 lg:p-8 flex flex-col items-center text-center"
+              className="group bg-white hover:bg-bmd-ivory-50 transition-colors duration-300
+                         p-6 lg:p-8 flex flex-col items-center text-center"
             >
-              <div className="w-10 h-10 rounded-full bg-bmd-red/10 flex items-center justify-center mb-4 group-hover:bg-bmd-red/20 transition-colors duration-300">
-                <Icon className="w-5 h-5 text-bmd-red" />
+              <div className="w-10 h-10 rounded-sm bg-bmd-red-500/8 flex items-center justify-center
+                              mb-4 group-hover:bg-bmd-red-500/15 transition-colors duration-300">
+                <Icon className="w-5 h-5 text-bmd-red-500" />
               </div>
               <div className="flex items-baseline gap-1 mb-0.5">
-                <span className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
+                <span className="text-2xl lg:text-3xl font-extrabold text-bmd-ink-950 tracking-tight">
                   {value}
                 </span>
-                <span className="text-xs font-bold text-bmd-red uppercase tracking-wider">
+                <span className="text-xs font-bold text-bmd-red-500 uppercase tracking-wider">
                   {unit}
                 </span>
               </div>
-              <p className="text-xs font-bold text-neutral-300 uppercase tracking-wider mb-1.5">
+              <p className="text-xs font-bold text-bmd-ink-700 uppercase tracking-wider mb-1.5">
                 {label}
               </p>
-              <p className="text-xs text-neutral-600 leading-snug hidden sm:block">
+              <p className="text-xs text-bmd-ink-400 leading-snug hidden sm:block">
                 {description}
               </p>
             </div>
