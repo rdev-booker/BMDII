@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Phone, ChevronRight, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Phone, ShieldCheck } from 'lucide-react'
 import type { ServiceData } from '@/data/services'
 
 interface Props {
@@ -8,12 +8,12 @@ interface Props {
 }
 
 export default function ServiceHero({ service }: Props) {
-  const { hero, name, slug } = service
+  const { hero, slug } = service
 
   return (
     <section
       className="relative min-h-[88vh] flex flex-col justify-end bg-bmd-ink-950 overflow-hidden pt-[72px]"
-      aria-label={`${name} service hero`}
+      aria-label={`${service.name} service hero`}
     >
       {/* ── Background layers ──────────────────────────────────────────────── */}
       <div className="absolute inset-0 bg-hero-gradient" />
@@ -43,32 +43,6 @@ export default function ServiceHero({ service }: Props) {
 
           {/* Left column ─────────────────────────────────────────────────── */}
           <div className="pb-16 lg:pb-24">
-
-            {/* Breadcrumb */}
-            <nav
-              className="flex items-center gap-1.5 mb-8"
-              aria-label="Breadcrumb"
-            >
-              <Link
-                href="/"
-                className="text-label text-neutral-600 hover:text-neutral-400
-                           uppercase tracking-widest transition-colors duration-200"
-              >
-                Home
-              </Link>
-              <ChevronRight className="w-3 h-3 text-neutral-700" />
-              <Link
-                href="/#services"
-                className="text-label text-neutral-600 hover:text-neutral-400
-                           uppercase tracking-widest transition-colors duration-200"
-              >
-                Services
-              </Link>
-              <ChevronRight className="w-3 h-3 text-neutral-700" />
-              <span className="text-label text-bmd-red-500 uppercase tracking-widest font-semibold">
-                {name}
-              </span>
-            </nav>
 
             {/* Eyebrow */}
             <p className="eyebrow eyebrow-line mb-5">

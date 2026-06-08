@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   Menu, X, Phone, ChevronDown,
   Maximize2, Layers, Factory, Globe2,
-  ArrowRight, ShieldCheck,
+  ArrowRight, ShieldCheck, Home,
 } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
 import clsx from 'clsx'
@@ -53,8 +53,9 @@ export default function Navbar() {
   const [mobileServices, setMobileServices] = useState(false)
   const [megaOpen,       setMegaOpen]      = useState(false)
 
-  const megaRef   = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLElement>(null)
+  const megaRef      = useRef<HTMLDivElement>(null)
+  const headerRef    = useRef<HTMLElement>(null)
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -88,6 +89,19 @@ export default function Navbar() {
   const closeMobile = useCallback(() => {
     setMobileOpen(false)
     setMobileServices(false)
+  }, [])
+
+  const handleMegaEnter = useCallback(() => {
+    if (leaveTimeout.current) clearTimeout(leaveTimeout.current)
+    setMegaOpen(true)
+  }, [])
+
+  const handleMegaLeave = useCallback(() => {
+    leaveTimeout.current = setTimeout(() => setMegaOpen(false), 150)
+  }, [])
+
+  useEffect(() => {
+    return () => { if (leaveTimeout.current) clearTimeout(leaveTimeout.current) }
   }, [])
 
   return (
@@ -133,8 +147,22 @@ export default function Navbar() {
           {/* ── Desktop navigation ───────────────────────────────────────── */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
 
+            {/* Home link */}
+            <Link
+              href="/"
+              className="nav-link px-4 py-2 rounded-sm hover:bg-bmd-ivory-50 flex items-center gap-1.5"
+            >
+              <Home className="w-3.5 h-3.5 text-bmd-ink-400" />
+              Home
+            </Link>
+
             {/* Services mega-menu trigger */}
-            <div ref={megaRef} className="relative">
+            <div
+              ref={megaRef}
+              className="relative"
+              onMouseEnter={handleMegaEnter}
+              onMouseLeave={handleMegaLeave}
+            >
               <button
                 onClick={() => setMegaOpen(v => !v)}
                 aria-expanded={megaOpen}
@@ -158,14 +186,19 @@ export default function Navbar() {
               </button>
 
               {/* ── Mega-menu panel ─────────────────────────────────────── */}
-              {megaOpen && (
-                <div
-                  className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2
-                             w-[760px] xl:w-[840px]
-                             bg-white border border-bmd-ink-100 rounded-sm
-                             shadow-mega animate-slide-down"
-                  role="menu"
-                >
+              <div
+                className={clsx(
+                  'absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2',
+                  'w-[760px] xl:w-[840px]',
+                  'bg-white border border-bmd-ink-100 rounded-sm shadow-mega',
+                  'transition-all duration-200 ease-out origin-top',
+                  megaOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 pointer-events-none invisible'
+                )}
+                role="menu"
+                aria-hidden={!megaOpen}
+              >
                   {/* Panel header */}
                   <div className="px-6 pt-5 pb-4 border-b border-bmd-ink-100 flex items-center justify-between">
                     <div>
@@ -272,7 +305,6 @@ export default function Navbar() {
                     </div>
                   </div>
                 </div>
-              )}
             </div>
 
             {topNav.map(({ label, href }) => (
@@ -328,6 +360,17 @@ export default function Navbar() {
         )}
       >
         <div className="container-xl py-5 space-y-1">
+
+          {/* Home */}
+          <Link
+            href="/"
+            onClick={closeMobile}
+            className="flex items-center gap-2.5 py-3.5 px-2 text-bmd-ink-700 hover:text-bmd-ink-950
+                       font-semibold border-b border-bmd-ink-100 transition-colors duration-200"
+          >
+            <Home className="w-4 h-4 text-bmd-red-500" />
+            Home
+          </Link>
 
           {/* Services accordion */}
           <div>
