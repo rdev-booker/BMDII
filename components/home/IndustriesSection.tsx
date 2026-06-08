@@ -4,44 +4,23 @@ import { ArrowRight, Wind, Layers3, Settings2 } from 'lucide-react'
 const industries = [
   {
     icon: Wind,
-    title: 'HVAC and Mechanical',
+    title: 'HVAC & Mechanical',
     subtitle: 'Rooftop Units · Chillers · Air Handlers',
-    description:
-      'We understand job site timing. Whether it is a rooftop unit crane lift or a commercial chiller delivery, BMD coordinates specialized equipment transport to arrive exactly when your crew is ready.',
-    highlights: [
-      'Rooftop unit staging and delivery',
-      'Commercial chiller transport',
-      'Large-format air handler moves',
-      'Time-sensitive job site delivery',
-    ],
+    description: 'Rooftop units, chillers, and air handlers — delivered when your crew is on-site and the crane is ready.',
     visual: 'HVAC',
   },
   {
     icon: Layers3,
-    title: 'Steel and Metal Fabrication',
+    title: 'Steel & Metal Fabrication',
     subtitle: 'Structural Steel · Plate · Coils · Beams',
-    description:
-      'From structural steel for construction projects to coiled metal for fabrication shops, we move raw and finished steel with the securement expertise that protects your investment.',
-    highlights: [
-      'Structural steel and beams',
-      'Steel plate and coil transport',
-      'Fabricated assembly delivery',
-      'Steel service centre routes',
-    ],
+    description: 'Structural steel, plate, coils, and beams moved with the securement expertise your inventory demands.',
     visual: 'STEEL',
   },
   {
     icon: Settings2,
     title: 'Custom Manufacturing',
     subtitle: 'Machinery · Production Lines · One-Off Loads',
-    description:
-      'Custom-built equipment does not follow standard dimensions. Neither does our thinking. BMD specializes in the unusual loads: the one-offs, the prototypes, and the mission-critical production line moves.',
-    highlights: [
-      'CNC and production machinery',
-      'Oversized custom equipment',
-      'Production line relocation',
-      'Trade show and prototype freight',
-    ],
+    description: "If it doesn't fit a standard trailer, that's exactly when to call BMD. One-off loads are our normal.",
     visual: 'MFG',
   },
 ]
@@ -114,18 +93,9 @@ export default function IndustriesSection() {
                   {industry.subtitle}
                 </p>
 
-                <p className="text-sm text-bmd-ink-500 leading-relaxed mb-6">
+                <p className="text-sm text-bmd-ink-500 leading-relaxed mb-7">
                   {industry.description}
                 </p>
-
-                <ul className="space-y-2 mb-6">
-                  {industry.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-2.5 text-xs text-bmd-ink-500">
-                      <span className="w-1.5 h-1.5 rounded-full bg-bmd-red-500 flex-shrink-0" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
 
                 <Link
                   href="/contact"

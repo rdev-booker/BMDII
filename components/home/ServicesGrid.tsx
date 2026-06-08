@@ -6,9 +6,7 @@ const services = [
     icon: Maximize2,
     tag: 'Our Specialty',
     title: 'Over-Dimensional Freight',
-    description:
-      "Wide loads, high loads, long loads. We move what standard carriers won't touch. Fully permitted, professionally escorted, and expertly routed across Ontario and beyond.",
-    bullets: ['Pilot car coordination', 'MTO and DOT permits', 'Route surveys available'],
+    description: "Wide, high, and long loads — fully permitted, piloted, and routed. We move what standard carriers won't quote.",
     cta: 'Learn More',
     href: '/services/over-dimensional',
     featured: true,
@@ -16,10 +14,8 @@ const services = [
   {
     icon: Layers,
     tag: 'Open Deck',
-    title: 'Open Deck and Step Deck',
-    description:
-      "Flatbed, step deck, and RGN trailers for freight that won't fit in a box. Structural steel, machinery, equipment loaded and secured to industry standards.",
-    bullets: ['Flatbed, step deck, RGN', 'Tarping and securement', 'Complex load engineering'],
+    title: 'Open Deck & Step Deck',
+    description: "Flatbed, step deck, and RGN trailers for freight that won't fit in a box — steel, machinery, and equipment secured to the letter.",
     cta: 'Learn More',
     href: '/services/open-deck',
     featured: false,
@@ -28,9 +24,7 @@ const services = [
     icon: Factory,
     tag: 'Industrial',
     title: 'Industrial Full Truck Load',
-    description:
-      'Dedicated, direct FTL service for high-value industrial freight. Steel plate, coils, fabricated assemblies, and production equipment moved with precision.',
-    bullets: ['Dedicated truck and driver', 'Real-time load tracking', 'JIT delivery capability'],
+    description: 'Dedicated truck, direct route, real-time tracking. For high-value industrial freight that cannot share space.',
     cta: 'Learn More',
     href: '/services/industrial-ftl',
     featured: false,
@@ -38,10 +32,8 @@ const services = [
   {
     icon: Globe2,
     tag: 'Cross-Border',
-    title: 'Canada-U.S. Cross-Border',
-    description:
-      'Seamless freight movement between Canada and the United States. Full customs documentation, PAPS/PARS filing, and border-experienced drivers.',
-    bullets: ['PAPS and PARS filing', 'C-TPAT awareness', 'Experienced border drivers'],
+    title: 'Canada–U.S. Cross-Border',
+    description: 'Freight across the Canada–U.S. border with full customs documentation and border-experienced drivers. No surprises at the line.',
     cta: 'Learn More',
     href: '/services/over-dimensional#capabilities',
     featured: false,
@@ -123,26 +115,12 @@ export default function ServicesGrid() {
                 </h3>
 
                 <p
-                  className={`text-sm leading-relaxed mb-5 flex-1 ${
+                  className={`text-sm leading-relaxed mb-7 flex-1 ${
                     service.featured ? 'text-neutral-400' : 'text-bmd-ink-500'
                   }`}
                 >
                   {service.description}
                 </p>
-
-                <ul className="space-y-1.5 mb-7">
-                  {service.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className={`flex items-center gap-2 text-xs font-medium ${
-                        service.featured ? 'text-neutral-400' : 'text-bmd-ink-500'
-                      }`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-bmd-red-500 flex-shrink-0" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
 
                 <Link
                   href={service.href}
